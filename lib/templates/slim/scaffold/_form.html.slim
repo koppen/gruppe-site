@@ -1,0 +1,11 @@
+= simple_form_for(<%= singular_table_name %>) do |f|
+  = f.error_notification
+  = f.error_notification :message => f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+<%- attributes.each.with_index do |attribute, index| -%>
+    = f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %><% if index == 0 %>, :autofocus => true<% end %>
+<%- end -%>
+
+  .form-actions
+    = f.button :submit, :class => "btn btn-primary"

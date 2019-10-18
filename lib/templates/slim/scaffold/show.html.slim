@@ -1,0 +1,12 @@
+header.header
+  h1 = @<%= singular_table_name %>.to_s
+
+  = link_to "←", <%= index_helper %>_path, :class => "btn btn-secondary"
+  | &nbsp;
+  = link_to "Edit", edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => "btn btn-primary"
+
+<% attributes.each do |attribute| -%>
+p
+  strong <%= attribute.human_name %>:
+  = @<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>

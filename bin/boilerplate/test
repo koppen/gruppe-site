@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source "${BASH_SOURCE%/*}/ci/setup"
+source "${BASH_SOURCE%/*}/ci/build"
+source "${BASH_SOURCE%/*}/ci/cleanup"

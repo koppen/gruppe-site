@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Clean up
+rails destroy scaffold Person name --force
+rails db:drop

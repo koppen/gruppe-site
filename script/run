@@ -1,0 +1,7 @@
+
+if [ -x "$(command -v procodile)" ]; then
+  procodile start --dev --processes="web,worker,webpack"
+fi
+if [ -x "$(command -v foreman)" ]; then
+  foreman start --env=/dev/null --formation='web=1,worker=1,webpack=1'
+fi

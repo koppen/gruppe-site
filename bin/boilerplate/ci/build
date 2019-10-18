@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Sample usage of the app
+bundle exec rails generate scaffold Person name --force
+bundle exec rubocop --auto-correct
+bundle exec rails db:migrate
+bundle exec rails db:migrate RAILS_ENV=test
+
+# Verify
+bundle exec rubocop --fail-level=A
+bundle exec rake
+bundle exec rake assets:precompile
