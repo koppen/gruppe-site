@@ -6,7 +6,6 @@ AllCops:
     - 'bin/*'
     - 'config/initializers/backtrace_silencers.rb'
     - 'config/initializers/content_security_policy.rb'
-    - 'config/initializers/simple_form_bootstrap.rb'
     - 'config/initializers/wrap_parameters.rb'
     - 'config/puma.rb'
     - 'db/schema.rb'
