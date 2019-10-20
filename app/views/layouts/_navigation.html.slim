@@ -1,0 +1,9 @@
+nav.top-bar
+  ol.top-bar-section
+    li = link_to("gruppe.site", root_path, :class => "top-bar-item")
+
+  ol.top-bar-section
+    li = link_to(translate(".home"), root_path, :class => "top-bar-item")
+
+  ol.top-bar-section
+    li = link_to(translate(".sign_out"), user_session_path, :method => :destroy, :class => "top-bar-item")
