@@ -1,0 +1,21 @@
+@use "../theme/color" as color
+
+@mixin active-link
+  @apply underline
+
+  color: color.$link
+
+a:link
+  color: color.$link
+
+a:visited
+  color: color.$link
+
+a:hover
+  +active-link
+
+a:active
+  +active-link
+
+a:focus
+  +active-link

@@ -1,0 +1,27 @@
+@use "../theme/color"
+
+// Input
+//
+// Input wraps a complete form input control, with label,
+// hints, form control etc.
+@mixin input
+  @apply my-4
+
+@mixin input-meta
+  @apply block
+  @apply text-sm
+
+.input
+  +input
+
+  .hint
+    +input-meta
+
+.field_with_errors
+  color: color.$error
+
+  input
+    border-color: color.$error
+
+  .error
+    +input-meta

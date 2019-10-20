@@ -1,4 +1,30 @@
 // Set up Tailwind
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@use "tailwindcss/base"
+@use "tailwindcss/components"
+@use "tailwindcss/utilities"
+
+// Atoms
+//
+// Atoms are the basic building blocks of matter. Applied to web interfaces,
+// atoms are our HTML tags, such as a form label, an input or a button.
+@use "atoms/button"
+@use "atoms/form_control"
+@use "atoms/headline"
+@use "atoms/input"
+@use "atoms/label"
+@use "atoms/link"
+
+// Molecules
+//
+// Things start getting more interesting and tangible when we start combining
+// atoms together. Molecules are groups of atoms bonded together and are the
+// smallest fundamental units of a compound. These molecules take on their own
+// properties and serve as the backbone of our design systems.
+@use "molecules/form"
+
+// Organisms
+//
+// Molecules give us some building blocks to work with, and we can now combine
+// them together to form organisms. Organisms are groups of molecules joined
+// together to form a relatively complex, distinct section of an interface.
+@use "organisms/dialog"

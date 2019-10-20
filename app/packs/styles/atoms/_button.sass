@@ -1,0 +1,19 @@
+@use "sass:color"
+@use "../theme/color" as theme-color
+
+@mixin button
+  @apply py-2
+  @apply px-4
+  @apply rounded
+  @apply w-auto
+
+  background-color: theme-color.$primary
+  color: color.adjust(theme-color.$primary, $lightness: +40%)
+
+  &:hover
+    background-color: color.adjust(theme-color.$primary, $lightness: +10%)
+    color: color.adjust(theme-color.$primary, $lightness: +50%)
+
+input[type=submit],
+.button
+  +button
