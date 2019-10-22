@@ -33,6 +33,9 @@ gem "webpacker"
 # Assets management
 gem "uglifier"
 
+# Business logic
+gem "substance_operation"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
