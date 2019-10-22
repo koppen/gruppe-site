@@ -1,0 +1,13 @@
+header.header
+  h1 = @group.to_s
+
+  = link_to "←", groups_path, :class => "btn btn-secondary"
+  | &nbsp;
+  = link_to "Edit", edit_group_path(@group), :class => "btn btn-primary"
+
+p
+  strong Name:
+  = @group.name
+p
+  strong Description:
+  = @group.description

@@ -1,0 +1,21 @@
+header.header
+  h1 Groups
+
+  = link_to "New Group", new_group_path, :class => "btn btn-primary"
+
+table.resource-list
+  thead
+    tr
+      th Name
+      th Description
+      th.resource-list-actions
+
+  tbody
+    - @groups.each do |group|
+      tr
+        td = link_to group.name, group
+        td = link_to group.description, group
+        td.resource-list-actions
+          .btn-group role="group"
+            = link_to "Edit", edit_group_path(group), :class => "btn btn-sm btn-outline-primary"
+            = link_to "Destroy", group, :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
