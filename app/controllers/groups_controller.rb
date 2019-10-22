@@ -3,12 +3,14 @@
 class GroupsController < ApplicationController
   # POST /groups
   def create
-    @group = Group.new(group_params)
+    operation = CreateGroup.new(current_user)
+    operation.process(group_params)
 
-    if @group.save
+    if operation.success?
       flash[:success] = "Group was successfully created."
-      redirect_to @group
+      redirect_to operation.result
     else
+      @group = operation.result
       render :new
     end
   end
