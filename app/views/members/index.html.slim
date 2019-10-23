@@ -1,0 +1,18 @@
+header.header
+  h1 Members
+
+table.resource-list
+  thead
+    tr
+      th User
+      th Name
+      th.resource-list-actions
+
+  tbody
+    - @members.each do |member|
+      tr
+        td member.name
+        td member.email
+        td.resource-list-actions
+          .btn-group role="group"
+            = link_to "Destroy", group_member_path(@group, member), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"

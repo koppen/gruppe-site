@@ -74,12 +74,13 @@ RSpec.describe GroupsController, :type => :controller do
           expect(response).to redirect_to(Group.last)
         end
 
-        it "adds the current user as member of the group" do
+        it "uses the CreateGroup operation" do
+          expect_any_instance_of(CreateGroup).to \
+            receive(:process).
+            and_call_original
           post :create,
                :params => {:group => valid_attributes},
                :session => valid_session
-          created_group = Group.last
-          expect(created_group.members).to eq([current_user])
         end
       end
 

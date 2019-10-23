@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :membership do
     association :group
-    association :user
+    association :member
   end
 end
