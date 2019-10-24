@@ -8,4 +8,8 @@ class User < ApplicationRecord
     :rememberable,
     :trackable,
     :validatable
+
+  has_many :members, :dependent => :destroy
+  has_many :memberships, :through => :members
+  has_many :groups, :through => :memberships
 end
