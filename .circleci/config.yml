@@ -63,6 +63,13 @@ jobs:
             DATABASE_URL: "postgres://ubuntu:@localhost:5432/circle_test"
 
       - run:
+          name: Precompile assets
+          command: |
+            rake assets:precompile
+          environment:
+            DATABASE_URL: "postgres://ubuntu:@localhost:5432/circle_test"
+
+      - run:
           name: Lint code
           command: |
             bundle exec rubocop
