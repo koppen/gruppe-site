@@ -19,3 +19,22 @@ table.resource-list
         td.resource-list-actions
           .btn-group role="group"
             = link_to "Destroy", group_member_path(@group, member), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
+
+
+h2 Invitations
+
+table.resource-list
+  thead
+    tr
+      th E-mail
+      th Sent at
+      th.resource-list-actions
+
+  tbody
+    - @group.invitations.each do |invitation|
+      tr
+        td = invitation.email
+        td = localize(invitation.created_at)
+        td.resource-list-actions
+          .btn-group role="group"
+            = link_to "Destroy", group_invitation_path(@group, invitation), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
