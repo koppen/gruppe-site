@@ -4,19 +4,14 @@ class InvitationsController < ApplicationController
   # POST /invitations
   def create
     group = find_group
-    invitation = Invitation.new(invitation_params)
-    invitation.group = group
-    invitation.user = current_user
+    operation = InviteMemberToGroup.new(current_user)
+    operation.process(invitation_params[:email], group)
 
-    if invitation.save
+    if operation.success?
       flash[:success] = "Invitation was successfully created."
       redirect_to group_members_path(group)
     else
-      render :new,
-             :locals => {
-               :group => group,
-               :invitation => invitation,
-             }
+      render_new(operation.result)
     end
   end
 
@@ -33,11 +28,7 @@ class InvitationsController < ApplicationController
   def new
     group = find_group
     invitation = Invitation.new(:group => group, :user => current_user)
-    render :new,
-           :locals => {
-             :group => group,
-             :invitation => invitation,
-           }
+    render_new(invitation)
   end
 
   private
@@ -55,5 +46,14 @@ class InvitationsController < ApplicationController
     params.
       require(:invitation).
       permit(:email)
+  end
+
+  def render_new(invitation)
+    render \
+      :new,
+      :locals => {
+        :group => invitation.group,
+        :invitation => invitation,
+      }
   end
 end
