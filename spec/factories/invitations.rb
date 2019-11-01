@@ -6,6 +6,5 @@ FactoryBot.define do
     association :user
 
     email { "new@example.com" }
-    token { "randomstring" }
   end
 end
