@@ -1,6 +1,9 @@
 header.header
   h1 Members
 
+.header-actions
+  = link_to(translate(".add_member"), new_group_invitation_path(@group))
+
 table.resource-list
   thead
     tr

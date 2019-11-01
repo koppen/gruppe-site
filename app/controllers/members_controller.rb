@@ -1,22 +1,6 @@
 # frozen_string_literal: true
 
 class MembersController < ApplicationController
-  # POST /members
-  def create
-    group = find_group
-    user = find_user
-
-    operation = AddUserToGroup.new(current_user)
-    operation.process(user, group)
-
-    if operation.success?
-      flash[:success] = "Member was successfully created."
-    end
-
-    redirect_to group_members_path(group)
-  end
-
-  # DELETE /members/1
   def destroy
     @group = find_group
     @member = find_member

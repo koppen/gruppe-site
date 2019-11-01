@@ -1,0 +1,6 @@
+header.header
+  h1 New invitation
+
+  = link_to "←", group_members_path(group), :class => "btn btn-secondary"
+
+== render "form", :group => group, :invitation => invitation

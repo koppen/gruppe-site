@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   resource :dashboard, :only => [:show]
   resources :groups do
-    resources :members, :only => [:create, :destroy, :index]
+    resources :members, :only => [:destroy, :index]
+    resources :invitations, :only => [:create, :new, :destroy]
   end
 
   root :to => "dashboards#show"

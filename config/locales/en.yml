@@ -1,6 +1,13 @@
 en:
+  helpers:
+    submit:
+      invitation:
+        create: "Send invitation"
   layouts:
     navigation:
       home: "Home"
       sign_in: "Sign in"
       sign_out: "Sign out"
+  members:
+    index:
+      add_member: Add a new member
