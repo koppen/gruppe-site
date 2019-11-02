@@ -3,6 +3,15 @@ en:
     submit:
       invitation:
         create: "Send invitation"
+  invitations:
+    show:
+      headline: "You have been invited"
+      join: "Join %{group_name}"
+      reject: "No thanks"
+      you_have_been_invited: "You have been invited to join %{group_name}."
+  invitations_mailer:
+    notify_invitee:
+      subject: "Invitation to join %{group_name}"
   layouts:
     navigation:
       home: "Home"

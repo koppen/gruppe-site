@@ -1,0 +1,7 @@
+header.header
+  h1 = translate(".headline", :group_name => invitation.group.name)
+
+  p = translate(".you_have_been_invited", :group_name => invitation.group.name)
+
+  = button_to(translate(".join", :group_name => invitation.group.name), invitation_path(:id => invitation.token), :method => :patch)
+  = button_to(translate(".reject", :group_name => invitation.group.name), invitation_path(:id => invitation.token), :method => :delete)

@@ -9,6 +9,9 @@ class InvitationsMailer < ApplicationMailer
   def notify_invitee(invitation)
     @invitation = invitation
 
-    mail(:to => invitation.email)
+    mail(
+      :subject => translate(".subject", :group_name => invitation.group.name),
+      :to => invitation.email
+    )
   end
 end

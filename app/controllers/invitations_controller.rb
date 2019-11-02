@@ -17,9 +17,15 @@ class InvitationsController < ApplicationController
 
   # DELETE /invitations/1
   def destroy
-    group = find_group
-    @invitation = find_invitation(group)
-    @invitation.destroy
+    if params[:group_id]
+      group = find_group
+      invitation = find_invitation(group)
+    else
+      invitation = find_invitation_by_token
+      group = invitation.group
+    end
+
+    invitation.destroy
     flash[:success] = "Invitation was successfully destroyed."
     redirect_to group_members_path(group)
   end
@@ -31,7 +37,30 @@ class InvitationsController < ApplicationController
     render_new(invitation)
   end
 
+  def show
+    invitation = find_invitation_by_token
+    render_show(invitation)
+  end
+
+  def update
+    # Accept invitation
+    invitation = find_invitation_by_token
+    add_current_user_to_group(invitation)
+    delete_invitation(invitation)
+    redirect_to(group_path(invitation.group))
+  end
+
   private
+
+  def add_current_user_to_group(invitation)
+    group = invitation.group
+    inviter = invitation.user
+    AddUserToGroup.new(inviter).process(current_user, group)
+  end
+
+  def delete_invitation(invitation)
+    invitation.destroy
+  end
 
   def find_group
     Group.find(params[:group_id])
@@ -39,6 +68,10 @@ class InvitationsController < ApplicationController
 
   def find_invitation(group)
     group.invitations.find(params[:id])
+  end
+
+  def find_invitation_by_token
+    Invitation.find_by_token!(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
@@ -55,5 +88,11 @@ class InvitationsController < ApplicationController
         :group => invitation.group,
         :invitation => invitation,
       }
+  end
+
+  def render_show(invitation)
+    render \
+      :show,
+      :locals => {:invitation => invitation}
   end
 end
