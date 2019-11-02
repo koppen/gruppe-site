@@ -20,14 +20,15 @@ class InvitationsController < ApplicationController
     if params[:group_id]
       group = find_group
       invitation = find_invitation(group)
+      destination = group_members_path(group)
     else
       invitation = find_invitation_by_token
-      group = invitation.group
+      destination = root_path
     end
 
     invitation.destroy
     flash[:success] = "Invitation was successfully destroyed."
-    redirect_to group_members_path(group)
+    redirect_to destination
   end
 
   # GET /invitations/new
