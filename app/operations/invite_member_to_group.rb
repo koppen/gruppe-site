@@ -6,6 +6,9 @@ class InviteMemberToGroup < Substance::Operation
     invitation = build_invitation(email_address, group)
     self.success = invitation.save
     self.result = invitation
+    return unless success?
+
+    notify_invitee(invitation)
   end
 
   private
@@ -16,5 +19,9 @@ class InviteMemberToGroup < Substance::Operation
       :group => group,
       :user => user
     )
+  end
+
+  def notify_invitee(invitation)
+    InvitationsMailer.notify_invitee(invitation).deliver_later
   end
 end

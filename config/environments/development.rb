@@ -48,7 +48,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = {
     :host => "localhost",
-    :port => 3000,
+    :port => ENV["PORT"],
   }
 
   # Store uploaded files on the local file system (see config/storage.yml for

@@ -41,6 +41,12 @@ RSpec.describe InviteMemberToGroup do
       created_invitation = subject.result
       expect(created_invitation.token).to be_present
     end
+
+    it "notifies the invitee via email" do
+      expect {
+        subject.process(email_address, group)
+      }.to have_enqueued_job.on_queue("mailers").with(subject.result)
+    end
   end
 
   context "when email_address are invalid" do

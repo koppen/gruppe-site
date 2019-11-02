@@ -1,0 +1,5 @@
+h1 You have been invited!
+
+p You have been invited to join #{@invitation.group}.
+
+= link_to("View your invitation", invitation_url(:id => @invitation.token))
