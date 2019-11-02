@@ -92,93 +92,73 @@ RSpec.describe InvitationsController, :type => :controller do
         expect(response).to redirect_to(group_members_path(group))
       end
     end
-  end
 
-  describe "GET show" do
-    context "when logged in" do
-      let(:current_user) { FactoryBot.create(:user) }
+    describe "GET #new" do
+      it "returns a success response" do
+        get :new,
+            :params => {:group_id => group.to_param},
+            :session => valid_session
+        expect(response).to be_successful
+      end
+    end
 
-      before do
-        sign_in(current_user, :scope => :user)
+    describe "POST #create" do
+      context "with valid params" do
+        it "creates a new Invitation" do
+          expect {
+            post :create,
+                 :params => {
+                   :group_id => group.to_param,
+                   :invitation => valid_attributes,
+                 },
+                 :session => valid_session
+          }.to change(Invitation, :count).by(1)
+        end
+
+        it "redirects to the members list" do
+          post :create,
+               :params => {
+                 :invitation => valid_attributes,
+                 :group_id => group.to_param,
+               },
+               :session => valid_session
+          expect(response).to redirect_to(group_members_path(group))
+        end
       end
 
-      let(:valid_attributes) {
-        {:email => "darth@empire.gov"}
-      }
-
-      let(:invalid_attributes) {
-        {:email => ""}
-      }
-
-      let(:valid_session) { {} }
-
-      describe "GET #new" do
-        it "returns a success response" do
-          get :new,
-              :params => {:group_id => group.to_param},
-              :session => valid_session
+      context "with invalid params" do
+        it "renders the new template" do
+          post :create,
+               :params => {
+                 :group_id => group.to_param,
+                 :invitation => invalid_attributes,
+               },
+               :session => valid_session
           expect(response).to be_successful
         end
       end
+    end
 
-      describe "POST #create" do
-        context "with valid params" do
-          it "creates a new Invitation" do
-            expect {
-              post :create,
-                   :params => {
-                     :group_id => group.to_param,
-                     :invitation => valid_attributes,
-                   },
-                   :session => valid_session
-            }.to change(Invitation, :count).by(1)
-          end
-
-          it "redirects to the created invitation" do
-            post :create,
-                 :params => {
-                   :invitation => valid_attributes,
-                   :group_id => group.to_param,
-                 },
+    describe "DELETE #destroy" do
+      it "destroys the requested invitation" do
+        invitation = FactoryBot.create(:invitation, :group => group)
+        expect {
+          delete :destroy,
+                 :params => {:group_id => group.to_param,
+                             :id => invitation.to_param},
                  :session => valid_session
-            expect(response).to redirect_to(group_members_path(group))
-          end
-        end
-
-        context "with invalid params" do
-          it "renders the new template" do
-            post :create,
-                 :params => {
-                   :group_id => group.to_param,
-                   :invitation => invalid_attributes,
-                 },
-                 :session => valid_session
-            expect(response).to be_successful
-          end
-        end
+        }.to change(Invitation, :count).by(-1)
       end
 
-      describe "DELETE #destroy" do
-        it "destroys the requested invitation" do
-          invitation = FactoryBot.create(:invitation, :group => group)
-          expect {
-            delete :destroy,
-                   :params => {:group_id => group.to_param,
-                               :id => invitation.to_param},
-                   :session => valid_session
-          }.to change(Invitation, :count).by(-1)
-        end
-
-        it "redirects to the invitations list" do
-          invitation = FactoryBot.create(:invitation, :group => group)
-          delete :destroy,
-                 :params => {
-                   :group_id => group.to_param,
-                   :id => invitation.to_param,
-                 },
-                 :session => valid_session
-          expect(response).to redirect_to(group_members_path(group))
-        end
+      it "redirects to the invitations list" do
+        invitation = FactoryBot.create(:invitation, :group => group)
+        delete :destroy,
+               :params => {
+                 :group_id => group.to_param,
+                 :id => invitation.to_param,
+               },
+               :session => valid_session
+        expect(response).to redirect_to(group_members_path(group))
       end
     end
   end
