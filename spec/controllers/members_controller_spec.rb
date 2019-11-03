@@ -2,16 +2,14 @@
 
 require "rails_helper"
 
-RSpec.describe MembershipsController, :type => :controller do
+RSpec.describe MembersController, :type => :controller do
   include Devise::Test::ControllerHelpers
 
   let(:group) { FactoryBot.create(:group) }
   let(:user) { FactoryBot.create(:user) }
 
   let(:valid_attributes) {
-    {
-      :user_id => user.to_param,
-    }
+    FactoryBot.attribute_for(:member)
   }
 
   let(:invalid_attributes) {
@@ -42,7 +40,7 @@ RSpec.describe MembershipsController, :type => :controller do
 
     describe "DELETE #destroy" do
       it "destroys the requested member" do
-        member = Membership.create! valid_attributes
+        member = FactoryBot.create(:member, :group => group)
         expect {
           delete :destroy,
                  :params => {
@@ -59,7 +57,7 @@ RSpec.describe MembershipsController, :type => :controller do
           delete :destroy,
                  :params => {
                    :group_id => group.to_param,
-                   :id => member.membership.to_param,
+                   :id => member.to_param,
                  },
                  :session => valid_session
         }.to change {
@@ -68,14 +66,14 @@ RSpec.describe MembershipsController, :type => :controller do
       end
 
       it "redirects to the members list" do
-        member = Membership.create! valid_attributes
+        member = FactoryBot.create(:member, :group => group)
         delete :destroy,
                :params => {
                  :group_id => group.to_param,
                  :id => member.to_param,
                },
                :session => valid_session
-        expect(response).to redirect_to(group_memberships_path(group))
+        expect(response).to redirect_to(group_members_path(group))
       end
     end
   end

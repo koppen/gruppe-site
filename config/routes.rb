@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resource :dashboard, :only => [:show]
   resources :groups do
-    resources :memberships, :only => [:destroy, :index]
+    resources :members, :only => [:destroy, :index]
     resources :invitations, :only => [:create, :new, :destroy]
   end
   resources :invitations, :only => [:destroy, :show, :update]

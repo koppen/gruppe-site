@@ -53,7 +53,7 @@ RSpec.describe InvitationsController, :type => :controller do
                  :group_id => group.to_param,
                },
                :session => valid_session
-          expect(response).to redirect_to(group_memberships_path(group))
+          expect(response).to redirect_to(group_members_path(group))
         end
       end
 
@@ -89,7 +89,7 @@ RSpec.describe InvitationsController, :type => :controller do
                  :id => invitation.to_param,
                },
                :session => valid_session
-        expect(response).to redirect_to(group_memberships_path(group))
+        expect(response).to redirect_to(group_members_path(group))
       end
     end
 
@@ -122,7 +122,7 @@ RSpec.describe InvitationsController, :type => :controller do
                  :group_id => group.to_param,
                },
                :session => valid_session
-          expect(response).to redirect_to(group_memberships_path(group))
+          expect(response).to redirect_to(group_members_path(group))
         end
       end
 
@@ -158,7 +158,7 @@ RSpec.describe InvitationsController, :type => :controller do
                  :id => invitation.to_param,
                },
                :session => valid_session
-        expect(response).to redirect_to(group_memberships_path(group))
+        expect(response).to redirect_to(group_members_path(group))
       end
     end
   end

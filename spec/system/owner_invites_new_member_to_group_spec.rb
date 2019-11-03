@@ -21,12 +21,12 @@ RSpec.describe "OwnerInvitesNewMembershipToGroup", :type => :system do
   end
 
   it "invites the new member" do
-    visit group_memberships_path(group)
-    click_link I18n.translate("memberships.index.add_member")
+    visit group_members_path(group)
+    click_link I18n.translate("members.index.add_member")
 
     fill_in("Email", :with => "doofenshmirtz@evilinc.co")
     click_button(I18n.translate("helpers.submit.invitation.create"))
 
-    expect(current_path).to eq(group_memberships_path(group))
+    expect(current_path).to eq(group_members_path(group))
   end
 end

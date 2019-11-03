@@ -9,7 +9,7 @@ class InvitationsController < ApplicationController
 
     if operation.success?
       flash[:success] = "Invitation was successfully created."
-      redirect_to group_memberships_path(group)
+      redirect_to group_members_path(group)
     else
       render_new(operation.result)
     end
@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
     if params[:group_id]
       group = find_group
       invitation = find_invitation(group)
-      destination = group_memberships_path(group)
+      destination = group_members_path(group)
     else
       invitation = find_invitation_by_token
       destination = root_path

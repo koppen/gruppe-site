@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
-class MembershipsController < ApplicationController
+# Controller for managing the members of a group
+class MembersController < ApplicationController
   def destroy
     @group = find_group
     @member = find_member
     @member.destroy
-    flash[:success] = "Membership was successfully destroyed."
-    redirect_to group_memberships_path(@group)
+    flash[:success] = "Member was successfully destroyed."
+    redirect_to group_members_path(@group)
   end
 
   # GET /members
   def index
     @group = find_group
-    @members = Membership.all
+    @members = Member.all
   end
 
   private
@@ -22,7 +23,7 @@ class MembershipsController < ApplicationController
   end
 
   def find_member
-    Membership.find(params[:id])
+    Member.find(params[:id])
   end
 
   def find_user
