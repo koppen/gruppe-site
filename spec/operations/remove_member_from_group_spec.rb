@@ -14,11 +14,11 @@ RSpec.describe RemoveMemberFromGroup do
       group.members << member
     end
 
-    it "deletes the membership" do
+    it "deletes the group_user" do
       expect {
         subject.process(member, group)
       }.to change {
-        Membership.count
+        GroupUser.count
       }.by(-1)
     end
 
@@ -35,9 +35,9 @@ RSpec.describe RemoveMemberFromGroup do
       expect(subject).to be_success
     end
 
-    it "returns the removed membership in result" do
+    it "returns the removed group_user in result" do
       subject.process(member, group)
-      expect(subject.result).to be_a(Membership)
+      expect(subject.result).to be_a(GroupUser)
     end
   end
 end

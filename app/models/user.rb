@@ -10,6 +10,6 @@ class User < ApplicationRecord
     :validatable
 
   has_many :members, :dependent => :destroy
-  has_many :memberships, :through => :members
-  has_many :groups, :through => :memberships
+  has_many :group_users, :through => :members
+  has_many :groups, :through => :group_users
 end

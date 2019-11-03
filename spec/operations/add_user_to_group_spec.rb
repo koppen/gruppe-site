@@ -11,11 +11,11 @@ RSpec.describe AddUserToGroup do
     let(:group) { FactoryBot.create(:group) }
     let(:new_user) { FactoryBot.create(:user) }
 
-    it "creates a Membership" do
+    it "creates a GroupUser" do
       expect {
         subject.process(new_user, group)
       }.to change {
-        Membership.count
+        GroupUser.count
       }.by(1)
     end
 
@@ -32,15 +32,15 @@ RSpec.describe AddUserToGroup do
       expect(subject).to be_success
     end
 
-    it "returns a Membership as result" do
+    it "returns a GroupUser as result" do
       subject.process(new_user, group)
-      expect(subject.result).to be_a(Membership)
+      expect(subject.result).to be_a(GroupUser)
     end
 
     it "adds the user as a member of the group" do
       subject.process(new_user, group)
-      created_membership = subject.result
-      expect(created_membership.member.user).to eq(new_user)
+      created_group_user = subject.result
+      expect(created_group_user.member.user).to eq(new_user)
     end
   end
 end
