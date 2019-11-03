@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Adds a User to a Group, creating the Member and GroupUser objects
+# Adds a User to a Group, creating the Membership and GroupUser objects
 class AddUserToGroup < Substance::Operation
   def process(user, group)
     member = build_member(user)
@@ -17,10 +17,10 @@ class AddUserToGroup < Substance::Operation
   end
 
   def build_member(user)
-    Member.new(:user => user)
+    Membership.new(:user => user)
   end
 
   def build_group_user(group, member)
-    GroupUser.new(:group => group, :member => member)
+    GroupUser.new(:group => group, :membership => member)
   end
 end

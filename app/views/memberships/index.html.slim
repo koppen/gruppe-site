@@ -1,5 +1,5 @@
 header.header
-  h1 Members
+  h1 Memberships
 
 .header-actions
   = link_to(translate(".add_member"), new_group_invitation_path(@group))
@@ -18,7 +18,7 @@ table.resource-list
         td member.email
         td.resource-list-actions
           .btn-group role="group"
-            = link_to "Destroy", group_member_path(@group, member), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
+            = link_to "Destroy", group_membership_path(@group, member), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
 
 
 h2 Invitations

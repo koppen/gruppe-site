@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe MembersController, :type => :controller do
+RSpec.describe MembershipsController, :type => :controller do
   include Devise::Test::ControllerHelpers
 
   let(:group) { FactoryBot.create(:group) }
@@ -32,7 +32,7 @@ RSpec.describe MembersController, :type => :controller do
 
     describe "GET #index" do
       it "returns a success response" do
-        # Member.create! valid_attributes
+        # Membership.create! valid_attributes
         get :index,
             :params => {:group_id => group.to_param},
             :session => valid_session
@@ -42,7 +42,7 @@ RSpec.describe MembersController, :type => :controller do
 
     describe "DELETE #destroy" do
       it "destroys the requested member" do
-        member = Member.create! valid_attributes
+        member = Membership.create! valid_attributes
         expect {
           delete :destroy,
                  :params => {
@@ -50,7 +50,7 @@ RSpec.describe MembersController, :type => :controller do
                    :id => member.to_param,
                  },
                  :session => valid_session
-        }.to change(Member, :count).by(-1)
+        }.to change(Membership, :count).by(-1)
       end
 
       it "removes the member from the group" do
@@ -59,23 +59,23 @@ RSpec.describe MembersController, :type => :controller do
           delete :destroy,
                  :params => {
                    :group_id => group.to_param,
-                   :id => group_user.member.to_param,
+                   :id => group_user.membership.to_param,
                  },
                  :session => valid_session
         }.to change {
-          group.members.count
+          group.memberships.count
         }.by(-1)
       end
 
       it "redirects to the members list" do
-        member = Member.create! valid_attributes
+        member = Membership.create! valid_attributes
         delete :destroy,
                :params => {
                  :group_id => group.to_param,
                  :id => member.to_param,
                },
                :session => valid_session
-        expect(response).to redirect_to(group_members_path(group))
+        expect(response).to redirect_to(group_memberships_path(group))
       end
     end
   end

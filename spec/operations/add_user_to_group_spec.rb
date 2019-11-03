@@ -19,11 +19,11 @@ RSpec.describe AddUserToGroup do
       }.by(1)
     end
 
-    it "creates a Member" do
+    it "creates a Membership" do
       expect {
         subject.process(new_user, group)
       }.to change {
-        Member.count
+        Membership.count
       }.by(1)
     end
 
@@ -40,7 +40,7 @@ RSpec.describe AddUserToGroup do
     it "adds the user as a member of the group" do
       subject.process(new_user, group)
       created_group_user = subject.result
-      expect(created_group_user.member.user).to eq(new_user)
+      expect(created_group_user.membership.user).to eq(new_user)
     end
   end
 end

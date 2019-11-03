@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Removes a Member from a Group
+# Removes a Membership from a Group
 class RemoveMemberFromGroup < Substance::Operation
   def process(member, group)
     group_user = find_group_user(member, group)
@@ -12,6 +12,6 @@ class RemoveMemberFromGroup < Substance::Operation
   private
 
   def find_group_user(member, group)
-    group.group_users.where(:member => member).first
+    group.group_users.where(:membership => member).first
   end
 end

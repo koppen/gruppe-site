@@ -17,6 +17,6 @@ en:
       home: "Home"
       sign_in: "Sign in"
       sign_out: "Sign out"
-  members:
+  memberships:
     index:
       add_member: Add a new member

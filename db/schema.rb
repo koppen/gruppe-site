@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 2019_10_31_204132) do
 
   create_table "group_users", force: :cascade do |t|
     t.bigint "group_id", null: false
-    t.bigint "member_id", null: false
+    t.bigint "membership_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_group_users_on_group_id"
-    t.index ["member_id"], name: "index_group_users_on_member_id"
+    t.index ["membership_id"], name: "index_group_users_on_membership_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(version: 2019_10_31_204132) do
     t.index ["user_id"], name: "index_invitations_on_user_id"
   end
 
-  create_table "members", force: :cascade do |t|
+  create_table "memberships", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_members_on_user_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 2019_10_31_204132) do
   end
 
   add_foreign_key "group_users", "groups"
-  add_foreign_key "group_users", "members"
+  add_foreign_key "group_users", "memberships"
   add_foreign_key "invitations", "groups"
   add_foreign_key "invitations", "users"
-  add_foreign_key "members", "users"
+  add_foreign_key "memberships", "users"
 end

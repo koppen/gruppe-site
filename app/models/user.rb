@@ -9,7 +9,7 @@ class User < ApplicationRecord
     :trackable,
     :validatable
 
-  has_many :members, :dependent => :destroy
-  has_many :group_users, :through => :members
+  has_many :memberships, :dependent => :destroy
+  has_many :group_users, :through => :memberships
   has_many :groups, :through => :group_users
 end

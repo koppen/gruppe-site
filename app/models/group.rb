@@ -5,7 +5,7 @@ class Group < ApplicationRecord
 
   has_many :invitations, :dependent => :destroy
   has_many :group_users, :dependent => :destroy
-  has_many :members, :through => :group_users
+  has_many :memberships, :through => :group_users
 
   def to_s
     name

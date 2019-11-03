@@ -34,7 +34,7 @@ RSpec.describe CreateGroup do
     it "adds the user as a member of the group" do
       subject.process(attributes)
       created_group = subject.result
-      expect(created_group.members.first.user).to eq(user)
+      expect(created_group.memberships.first.user).to eq(user)
     end
   end
 

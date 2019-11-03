@@ -5,7 +5,7 @@ class CreateGroup < Substance::Operation
   def process(group_attributes)
     group = build_group(group_attributes)
     member = build_member(user)
-    group.members = [member]
+    group.memberships = [member]
 
     self.success = group.save
     self.result = group
@@ -18,6 +18,6 @@ class CreateGroup < Substance::Operation
   end
 
   def build_member(user)
-    Member.new(:user => user)
+    Membership.new(:user => user)
   end
 end

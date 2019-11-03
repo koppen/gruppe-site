@@ -27,7 +27,7 @@ RSpec.describe "New member receives invitation", :type => :system do
           I18n.translate("invitations.show.join", :group_name => group.name)
         )
 
-        expect(group.members.map(&:email)).to include(invitation.email)
+        expect(group.memberships.map(&:email)).to include(invitation.email)
         expect { invitation.reload }.to \
           raise_error(ActiveRecord::RecordNotFound)
         expect(current_path).to eq(group_path(group))
@@ -37,7 +37,7 @@ RSpec.describe "New member receives invitation", :type => :system do
         visit invitation_url(:id => invitation.token)
         click_button I18n.translate("invitations.show.reject")
 
-        expect(group.members.map(&:email)).to_not include(invitation.email)
+        expect(group.memberships.map(&:email)).to_not include(invitation.email)
         expect { invitation.reload }.to \
           raise_error(ActiveRecord::RecordNotFound)
         expect(current_path).to eq(root_path)
