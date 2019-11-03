@@ -54,12 +54,12 @@ RSpec.describe MembershipsController, :type => :controller do
       end
 
       it "removes the member from the group" do
-        group_user = FactoryBot.create(:group_user, :group => group)
+        member = FactoryBot.create(:member, :group => group)
         expect {
           delete :destroy,
                  :params => {
                    :group_id => group.to_param,
-                   :id => group_user.membership.to_param,
+                   :id => member.membership.to_param,
                  },
                  :session => valid_session
         }.to change {

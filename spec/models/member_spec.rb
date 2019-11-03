@@ -2,13 +2,13 @@
 
 require "rails_helper"
 
-RSpec.describe GroupUser, :type => :model do
+RSpec.describe Member, :type => :model do
   it { should belong_to(:group) }
   it { should belong_to(:membership).dependent(true) }
 
   describe "#destroy" do
     subject {
-      FactoryBot.create(:group_user)
+      FactoryBot.create(:member)
     }
 
     it "destroys the associated Membership" do

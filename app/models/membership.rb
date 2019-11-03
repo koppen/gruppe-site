@@ -5,11 +5,11 @@
 #
 # A Membership is the way a User decides to present themselves to a specific Group.
 #
-# Basically, Membership is controlled by the User, whereas GroupUser is controlled
+# Basically, Membership is controlled by the User, whereas Member is controlled
 # by the Group (owners).
 class Membership < ApplicationRecord
   belongs_to :user
-  has_one :group_user, :dependent => :destroy
+  has_one :member, :dependent => :destroy
 
   delegate :email, :to => :user
 end
