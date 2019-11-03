@@ -13,4 +13,5 @@ class Membership < ApplicationRecord
   has_one :member, :dependent => :destroy
 
   delegate :email, :to => :user
+  delegate :group, :to => :member
 end
