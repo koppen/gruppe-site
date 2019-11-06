@@ -18,9 +18,8 @@ class InvitationsController < ApplicationController
   # DELETE /invitations/1
   def destroy
     if params[:group_id]
-      group = find_group
-      invitation = find_invitation(group)
-      destination = group_members_path(group)
+      invitation = find_invitation
+      destination = group_members_path(invitation.group)
     else
       invitation = find_invitation_by_token
       destination = root_path
@@ -67,7 +66,8 @@ class InvitationsController < ApplicationController
     Group.find(params[:group_id])
   end
 
-  def find_invitation(group)
+  def find_invitation
+    group = find_group
     group.invitations.find(params[:id])
   end
 
