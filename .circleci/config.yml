@@ -50,6 +50,7 @@ jobs:
           command: |
             rake db:create
             rake db:migrate
+            rails db:environment:set RAILS_ENV=test
           environment:
             DATABASE_URL: "postgres://ubuntu:@localhost:5432/circle_test"
 
