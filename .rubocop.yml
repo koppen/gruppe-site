@@ -14,19 +14,16 @@ AllCops:
     - 'vendor/**/*'
   TargetRubyVersion: 2.6
 
-Layout/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
-
 Layout/DotPosition:
   EnforcedStyle: trailing
 
 Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   EnforcedStyle: consistent
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   EnforcedStyle: consistent
 
 Layout/MultilineMethodCallIndentation:
@@ -34,6 +31,9 @@ Layout/MultilineMethodCallIndentation:
 
 Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
 
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
