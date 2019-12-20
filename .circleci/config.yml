@@ -48,9 +48,9 @@ jobs:
       - run:
           name: setup
           command: |
-            rake db:create
-            rake db:migrate
-            rails db:environment:set RAILS_ENV=test
+            bundle exec rake db:create
+            bundle exec rake db:migrate
+            bundle exec rails db:environment:set RAILS_ENV=test
           environment:
             DATABASE_URL: "postgres://ubuntu:@localhost:5432/circle_test"
 
@@ -59,14 +59,14 @@ jobs:
           name: run tests
           command: |
             mkdir /tmp/test-results
-            rake
+            bundle exec rake
           environment:
             DATABASE_URL: "postgres://ubuntu:@localhost:5432/circle_test"
 
       - run:
           name: Precompile assets
           command: |
-            rake assets:precompile
+            bundle exec rake assets:precompile
           environment:
             DATABASE_URL: "postgres://ubuntu:@localhost:5432/circle_test"
 
