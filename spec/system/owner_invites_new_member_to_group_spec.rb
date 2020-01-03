@@ -14,10 +14,7 @@ RSpec.describe "OwnerInvitesNewMembershipToGroup", :type => :system do
   before do
     group.memberships << FactoryBot.create(:membership, :user => owner)
 
-    visit new_user_session_url
-    fill_in("Email", :with => owner.email)
-    fill_in("Password", :with => "verysecret")
-    click_button("Log in")
+    login_as(owner)
   end
 
   it "invites the new member" do
