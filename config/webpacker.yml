@@ -60,9 +60,9 @@ development:
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
     https: false
-    host: 0.0.0.0
-    port: 8080
-    public: localhost:8080
+    host: localhost
+    port: 3035
+    public: localhost:3035
     hmr: false
     # Inline should be set to true if using HMR
     inline: true
@@ -77,9 +77,9 @@ development:
     watch_options:
       ignored: '**/node_modules/**'
 
+
 test:
   <<: *default
-
   compile: true
 
   # Compile test packs to a separate directory
