@@ -73,7 +73,7 @@ group :development do
 end
 
 group :test do
-  gem "database_cleaner", :require => false
+  gem "database_cleaner-active_record", :require => false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
