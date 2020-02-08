@@ -4,7 +4,7 @@
 class MembersController < ApplicationController
   def destroy
     @group = find_group
-    @member = find_member
+    @member = find_member(@group)
     @member.destroy
     flash[:success] = "Member was successfully destroyed."
     redirect_to group_members_path(@group)
@@ -19,11 +19,11 @@ class MembersController < ApplicationController
   private
 
   def find_group
-    Group.find(params[:group_id])
+    current_user.groups.find(params[:group_id])
   end
 
-  def find_member
-    Member.find(params[:id])
+  def find_member(group)
+    group.members.find(params[:id])
   end
 
   def find_user

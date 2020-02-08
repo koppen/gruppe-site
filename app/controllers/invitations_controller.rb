@@ -63,7 +63,7 @@ class InvitationsController < ApplicationController
   end
 
   def find_group
-    Group.find(params[:group_id])
+    current_user.groups.find(params[:group_id])
   end
 
   def find_invitation

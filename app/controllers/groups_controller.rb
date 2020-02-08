@@ -58,7 +58,7 @@ class GroupsController < ApplicationController
   private
 
   def find_group
-    Group.find(params[:id])
+    current_user.groups.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
