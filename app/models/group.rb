@@ -7,6 +7,8 @@ class Group < ApplicationRecord
   has_many :members, :dependent => :destroy
   has_many :memberships, :through => :members
 
+  has_many :posts, :dependent => :destroy
+
   def to_s
     name
   end

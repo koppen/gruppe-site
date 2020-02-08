@@ -7,6 +7,7 @@ RSpec.describe Group, :type => :model do
 
   it { should have_many(:invitations) }
 
+  it { should have_many(:posts) }
   it { should have_many(:members) }
   it { should have_many(:memberships).through(:members) }
 

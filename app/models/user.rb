@@ -12,4 +12,6 @@ class User < ApplicationRecord
   has_many :memberships, :dependent => :destroy
   has_many :members, :through => :memberships
   has_many :groups, :through => :members
+
+  has_many :posts, :through => :memberships, :dependent => :destroy
 end

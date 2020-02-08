@@ -11,6 +11,7 @@
 class Membership < ApplicationRecord
   belongs_to :user
   has_one :member, :dependent => :destroy
+  has_many :posts, :dependent => :destroy
 
   delegate :email, :to => :user
   delegate :group, :to => :member

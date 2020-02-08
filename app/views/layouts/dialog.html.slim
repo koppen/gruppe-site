@@ -1,0 +1,10 @@
+doctype html
+html lang="#{I18n.locale}"
+  = render "layouts/head"
+
+  body.dialog
+    .container-fluid.content
+      section.main-content
+        = yield
+
+    = yield(:append_javascript)
