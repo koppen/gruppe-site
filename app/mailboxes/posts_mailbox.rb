@@ -16,7 +16,7 @@ class PostsMailbox < ApplicationMailbox
 
   def find_group_by_email_address(user, recipient)
     group_name = recipient.split("@").first
-    user.groups.where("lower(name) = ?", group_name.downcase)
+    user.groups.where("lower(groups.name) = ?", group_name.downcase).first
   end
 
   def process_mail_from_user(user)
@@ -38,5 +38,12 @@ class PostsMailbox < ApplicationMailbox
     Rails.logger.debug {
       "[#{self.class}] CREATE A POST IN #{group} FROM #{user}"
     }
+
+    group.posts.create!(
+      :user => user,
+      :body => mail.body,
+      :raw_text_body => mail.text_part,
+      :raw_html_body => mail.html_part
+    )
   end
 end
