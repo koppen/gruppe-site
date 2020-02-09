@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+
   # POST /groups
   def create
     operation = CreateGroup.new(current_user)

@@ -2,6 +2,8 @@
 
 # Controller for managing the members of a group
 class MembersController < ApplicationController
+  before_action :authenticate_user!
+
   def destroy
     @group = find_group
     @member = find_member(@group)
