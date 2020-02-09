@@ -1,0 +1,43 @@
+@mixin card
+  @apply block
+  @apply max-w-sm
+  @apply overflow-hidden
+  @apply rounded-lg
+  @apply shadow-xl
+
+  &:link,
+  &:visited
+    @apply text-black
+
+@mixin card-action
+  @apply p-2
+
+@mixin card-actions
+  @apply flex
+  @apply px-4
+
+@mixin card-body
+  @apply p-4
+  @apply pt-0
+
+@mixin card-header
+
+@mixin card-title
+  @apply font-bold
+  @apply m-4
+  @apply text-base
+
+.card
+  +card
+
+.card-actions
+  +card-actions
+
+.card-body
+  +card-body
+
+.card-header
+  +card-header
+
+.card-title
+  +card-title
