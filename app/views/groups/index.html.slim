@@ -3,12 +3,13 @@ header.header
 
   = link_to "New Group", new_group_path, :class => "btn btn-primary"
 
-- @groups.each do |group|
-  = link_to(group, :class => "card") do
-    .card-header
-      h2.card-title = group.name
-    .card-body
-      = group.description
+.resource-gallery
+  - @groups.each do |group|
+    = link_to(group, :class => "card") do
+      .card-header
+        h2.card-title = group.name
+      .card-body
+        = group.description
 
 table.resource-list
   thead
