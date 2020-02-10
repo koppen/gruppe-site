@@ -1,0 +1,8 @@
+@use "../theme/color" as theme-color
+
+@mixin body
+  background-color: theme-color.$background
+  color: theme-color.$primary-copy
+
+body
+  +body
