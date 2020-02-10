@@ -10,19 +10,3 @@ header.header
         h2.card-title = group.name
       .card-body
         = group.description
-
-table.resource-list
-  thead
-    tr
-      th Name
-      th Description
-      th.resource-list-actions
-
-  tbody
-    - @groups.each do |group|
-      tr
-        td = link_to group.name, group
-        td = link_to group.description, group
-        td.resource-list-actions
-          .btn-group role="group"
-            = link_to "Edit", edit_group_path(group), :class => "btn btn-sm btn-outline-primary"
