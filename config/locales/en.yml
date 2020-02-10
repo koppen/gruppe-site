@@ -1,4 +1,9 @@
 en:
+  groups:
+    index:
+      page_description: "These are the groups your are a member of"
+      page_title: "Your groups"
+
   helpers:
     submit:
       invitation:

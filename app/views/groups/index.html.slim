@@ -1,7 +1,12 @@
-header.header
-  h1 Groups
+- content_for(:page_title) { translate(".page_title") }
 
-  = link_to "New Group", new_group_path, :class => "btn btn-primary"
+header.header
+  h1 = yield(:page_title)
+
+  .header-introduction = translate(".page_description")
+
+  .header-actions
+    = link_to "New Group", new_group_path, :class => "btn btn-primary"
 
 .resource-gallery
   - @groups.each do |group|
