@@ -26,6 +26,7 @@ en:
   members:
     index:
       add_member: Add a new member
+      page_title: "Members of %{group_name}"
   memberships:
     edit:
       headline: "Your membership of %{group_name}"

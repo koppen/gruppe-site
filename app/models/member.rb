@@ -6,4 +6,6 @@
 class Member < ApplicationRecord
   belongs_to :group
   belongs_to :membership, :dependent => :destroy
+
+  delegate :name, :email, :to => :membership
 end

@@ -1,21 +1,27 @@
-header.header
-  h1 Memberships
+- content_for(:page_title) { translate(".page_title", :group_name => @group.name) }
 
-.header-actions
-  = link_to(translate(".add_member"), new_group_invitation_path(@group))
+header.header
+  .header-action-cancel
+    = link_to "←", @group
+
+  h1 = content_for(:page_title)
+
+
+  .header-actions
+    = link_to(translate(".add_member"), new_group_invitation_path(@group))
 
 table.resource-list
   thead
     tr
-      th User
       th Name
+      th Email
       th.resource-list-actions
 
   tbody
     - @members.each do |member|
-      tr
-        td member.name
-        td member.email
+      tr.resource-list-row
+        td = member.name
+        td = member.email
         td.resource-list-actions
           .btn-group role="group"
             = link_to "Destroy", group_member_path(@group, member), :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"

@@ -15,7 +15,7 @@ class MembersController < ApplicationController
   # GET /members
   def index
     @group = find_group
-    @members = Member.all
+    @members = @group.members
   end
 
   private
