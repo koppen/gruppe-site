@@ -1,11 +1,12 @@
-header.group-header
-  h1.group-header-name = @group.to_s
-  - if @group.description.present?
-    .group-header-description
-      = @group.description
+- content_for(:page_title) { @group.to_s }
 
-  = link_to "←", groups_path, :class => "btn btn-secondary"
-  | &nbsp;
-  = link_to "Edit", edit_group_path(@group), :class => "btn btn-primary"
-  | &nbsp;
-  = link_to "Destroy", @group, :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
+header.header
+  h1 = yield(:page_title)
+
+  - if @group.description.present?
+    .header-introduction = @group.description
+
+  .header-actions
+    = link_to "Edit", edit_group_path(@group), :class => "btn btn-primary"
+    | &nbsp;
+    = link_to "Destroy", @group, :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
