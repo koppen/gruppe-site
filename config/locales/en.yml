@@ -22,6 +22,7 @@ en:
       home: "Home"
       sign_in: "Sign in"
       sign_out: "Sign out"
+      your_groups: "Your groups"
   members:
     index:
       add_member: Add a new member
