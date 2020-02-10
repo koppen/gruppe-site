@@ -1,13 +1,21 @@
 @mixin card
+  @apply bg-white
   @apply block
+  @apply duration-200
   @apply max-w-sm
   @apply overflow-hidden
   @apply rounded-lg
   @apply shadow-xl
+  @apply transform
 
   &:link,
   &:visited
     @apply text-black
+
+  &:hover
+    @apply no-underline
+    @apply scale-105
+    @apply shadow-2xl
 
 @mixin card-action
   @apply p-2
