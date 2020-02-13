@@ -6,9 +6,10 @@ header.header
 
   h1 = content_for(:page_title)
 
-
   .header-actions
     = link_to(translate(".add_member"), new_group_invitation_path(@group))
+
+= render("groups/navigation", :group => @group)
 
 table.resource-list
   thead
