@@ -1,0 +1,21 @@
+// Content Navigation
+//
+// Provides navigation for subsections of a page. Can be used as a "table of
+// content"-like navigation or to group multiple pages together to form a
+// coherent whole.
+@mixin content-navigation-item
+  @apply block
+  @apply flex-grow
+
+@mixin content-navigation-items
+  @apply flex
+  @apply items-stretch
+  @apply justify-start
+
+.content-navigation
+
+.content-navigation-item
+  +content-navigation-items
+
+.content-navigation-items
+  +content-navigation-items

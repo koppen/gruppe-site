@@ -3,10 +3,12 @@
 header.header
   h1 = yield(:page_title)
 
-  - if @group.description.present?
-    .header-introduction = @group.description
-
   .header-actions
     = link_to "Edit", edit_group_path(@group), :class => "btn btn-primary"
     | &nbsp;
     = link_to "Destroy", @group, :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "btn btn-sm btn-outline-danger"
+
+= render("groups/navigation", :group => @group)
+
+- if @group.description.present?
+  .header-introduction = @group.description
