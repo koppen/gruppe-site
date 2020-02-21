@@ -31,8 +31,13 @@ RSpec.describe GroupsController, :type => :controller do
     end
 
     describe "GET #show" do
+      let(:group) { Group.create!(valid_attributes) }
+
+      before do
+        group.memberships.create(:user => current_user)
+      end
+
       it "returns a success response" do
-        group = Group.create! valid_attributes
         get :show,
             :params => {:id => group.to_param},
             :session => valid_session
@@ -48,8 +53,13 @@ RSpec.describe GroupsController, :type => :controller do
     end
 
     describe "GET #edit" do
+      let(:group) { Group.create!(valid_attributes) }
+
+      before do
+        group.memberships.create(:user => current_user)
+      end
+
       it "returns a success response" do
-        group = Group.create! valid_attributes
         get :edit,
             :params => {:id => group.to_param},
             :session => valid_session
@@ -95,13 +105,18 @@ RSpec.describe GroupsController, :type => :controller do
     end
 
     describe "PUT #update" do
+      let(:group) { Group.create!(valid_attributes) }
+
+      before do
+        group.memberships.create(:user => current_user)
+      end
+
       context "with valid params" do
         let(:new_attributes) {
           {:name => "Association of Evilness"}
         }
 
         it "updates the requested group" do
-          group = Group.create! valid_attributes
           put :update,
               :params => {
                 :id => group.to_param,
@@ -113,7 +128,6 @@ RSpec.describe GroupsController, :type => :controller do
         end
 
         it "redirects to the group" do
-          group = Group.create! valid_attributes
           put :update,
               :params => {
                 :id => group.to_param,
@@ -126,7 +140,6 @@ RSpec.describe GroupsController, :type => :controller do
 
       context "with invalid params" do
         it "returns a success response (i.e. to display the 'edit' template)" do
-          group = Group.create! valid_attributes
           put :update,
               :params => {
                 :id => group.to_param,
@@ -139,8 +152,13 @@ RSpec.describe GroupsController, :type => :controller do
     end
 
     describe "DELETE #destroy" do
+      let(:group) { Group.create!(valid_attributes) }
+
+      before do
+        group.memberships.create(:user => current_user)
+      end
+
       it "destroys the requested group" do
-        group = Group.create! valid_attributes
         expect {
           delete :destroy,
                  :params => {:id => group.to_param},
@@ -149,7 +167,6 @@ RSpec.describe GroupsController, :type => :controller do
       end
 
       it "redirects to the groups list" do
-        group = Group.create! valid_attributes
         delete :destroy,
                :params => {:id => group.to_param},
                :session => valid_session

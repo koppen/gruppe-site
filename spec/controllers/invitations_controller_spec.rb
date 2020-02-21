@@ -6,10 +6,13 @@ RSpec.describe InvitationsController, :type => :controller do
   include Devise::Test::ControllerHelpers
 
   let(:group) { FactoryBot.create(:group) }
+  let(:current_user) { FactoryBot.create(:user) }
+
+  before do
+    group.memberships.create(:user => current_user)
+  end
 
   context "when logged in" do
-    let(:current_user) { FactoryBot.create(:user) }
-
     before do
       sign_in(current_user, :scope => :user)
     end

@@ -21,11 +21,13 @@ RSpec.describe MembersController, :type => :controller do
 
   let(:valid_session) { {} }
 
-  context "when logged in" do
-    let(:current_user) { FactoryBot.create(:user) }
+  before do
+    group.memberships.create!(:user => user)
+  end
 
+  context "when logged in" do
     before do
-      sign_in(current_user, :scope => :user)
+      sign_in(user, :scope => :user)
     end
 
     describe "GET #index" do
@@ -39,8 +41,9 @@ RSpec.describe MembersController, :type => :controller do
     end
 
     describe "DELETE #destroy" do
+      let!(:member) { FactoryBot.create(:member, :group => group) }
+
       it "destroys the requested member" do
-        member = FactoryBot.create(:member, :group => group)
         expect {
           delete :destroy,
                  :params => {
@@ -52,7 +55,6 @@ RSpec.describe MembersController, :type => :controller do
       end
 
       it "removes the member from the group" do
-        member = FactoryBot.create(:member, :group => group)
         expect {
           delete :destroy,
                  :params => {
@@ -66,7 +68,6 @@ RSpec.describe MembersController, :type => :controller do
       end
 
       it "redirects to the members list" do
-        member = FactoryBot.create(:member, :group => group)
         delete :destroy,
                :params => {
                  :group_id => group.to_param,
