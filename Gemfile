@@ -50,8 +50,8 @@ group :development, :test do
   gem "rspec-rails", ">= 4.0.0.beta2"
   gem "shoulda-matchers"
 
-  gem "rubocop"
-  gem "rubocop-performance"
+  gem "rubocop", :require => false
+  gem "rubocop-performance", :require => false
 end
 
 group :development do
