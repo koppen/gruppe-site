@@ -3,8 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Post, :type => :model do
-  it { should validate_presence_of(:body) }
+  it { is_expected.to validate_presence_of(:body) }
 
-  it { should belong_to(:group) }
-  it { should belong_to(:membership) }
+  it { is_expected.to belong_to(:group) }
+  it { is_expected.to belong_to(:membership) }
 end

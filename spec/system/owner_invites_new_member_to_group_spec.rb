@@ -24,6 +24,6 @@ RSpec.describe "OwnerInvitesNewMembershipToGroup", :type => :system do
     fill_in("Email", :with => "doofenshmirtz@evilinc.co")
     click_button(I18n.translate("helpers.submit.invitation.create"))
 
-    expect(current_path).to eq(group_members_path(group))
+    expect(page).to have_current_path(group_members_path(group), :ignore_query => true)
   end
 end
