@@ -12,6 +12,7 @@ AllCops:
     - 'lib/templates/**/*.rb'
     - 'node_modules/**/*'
     - 'vendor/**/*'
+  NewCops: enable
   TargetRubyVersion: 2.6
 
 Layout/DotPosition:
