@@ -30,17 +30,17 @@ RSpec.describe "New member receives invitation", :type => :system do
         expect(group.memberships.map(&:email)).to include(invitation.email)
         expect { invitation.reload }.to \
           raise_error(ActiveRecord::RecordNotFound)
-        expect(current_path).to eq(group_path(group))
+        expect(page).to have_current_path(group_path(group), :ignore_query => true)
       end
 
       it "rejects the invitation" do
         visit invitation_url(:id => invitation.token)
         click_button I18n.translate("invitations.show.reject")
 
-        expect(group.memberships.map(&:email)).to_not include(invitation.email)
+        expect(group.memberships.map(&:email)).not_to include(invitation.email)
         expect { invitation.reload }.to \
           raise_error(ActiveRecord::RecordNotFound)
-        expect(current_path).to eq(root_path)
+        expect(page).to have_current_path(root_path, :ignore_query => true)
       end
     end
   end

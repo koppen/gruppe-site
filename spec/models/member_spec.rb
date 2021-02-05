@@ -3,8 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Member, :type => :model do
-  it { should belong_to(:group) }
-  it { should belong_to(:membership).dependent(true) }
+  it { is_expected.to belong_to(:group) }
+  it { is_expected.to belong_to(:membership).dependent(true) }
 
   describe "#destroy" do
     subject {

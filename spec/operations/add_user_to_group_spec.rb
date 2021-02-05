@@ -3,9 +3,9 @@
 require "rails_helper"
 
 RSpec.describe AddUserToGroup do
-  let(:user) { FactoryBot.build(:user) }
-
   subject { described_class.new(user) }
+
+  let(:user) { FactoryBot.build(:user) }
 
   context "when attributes are valid" do
     let(:group) { FactoryBot.create(:group) }
@@ -14,17 +14,13 @@ RSpec.describe AddUserToGroup do
     it "creates a Member" do
       expect {
         subject.process(new_user, group)
-      }.to change {
-        Member.count
-      }.by(1)
+      }.to change(Member, :count).by(1)
     end
 
     it "creates a Membership" do
       expect {
         subject.process(new_user, group)
-      }.to change {
-        Membership.count
-      }.by(1)
+      }.to change(Membership, :count).by(1)
     end
 
     it "is a success" do

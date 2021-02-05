@@ -3,9 +3,9 @@
 require "rails_helper"
 
 RSpec.describe CreateGroup do
-  let(:user) { FactoryBot.build(:user) }
-
   subject { described_class.new(user) }
+
+  let(:user) { FactoryBot.build(:user) }
 
   context "when attributes are valid" do
     let(:attributes) { FactoryBot.attributes_for(:group) }
@@ -13,17 +13,13 @@ RSpec.describe CreateGroup do
     it "creates a group" do
       expect {
         subject.process(attributes)
-      }.to change {
-        Group.count
-      }.by(1)
+      }.to change(Group, :count).by(1)
     end
 
     it "returns the created group in result" do
       expect {
         subject.process(attributes)
-      }.to change {
-        Group.count
-      }.by(1)
+      }.to change(Group, :count).by(1)
     end
 
     it "is a success" do
@@ -44,14 +40,12 @@ RSpec.describe CreateGroup do
     it "does not create an invalid group" do
       expect {
         subject.process(attributes)
-      }.to_not change {
-        Group.count
-      }
+      }.not_to change(Group, :count)
     end
 
     it "is not a success" do
       subject.process(attributes)
-      expect(subject).to_not be_success
+      expect(subject).not_to be_success
     end
   end
 end

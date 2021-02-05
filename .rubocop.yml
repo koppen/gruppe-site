@@ -1,4 +1,9 @@
-require: 'rubocop-performance'
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   DisplayCopNames: true
@@ -12,6 +17,7 @@ AllCops:
     - 'lib/templates/**/*.rb'
     - 'node_modules/**/*'
     - 'vendor/**/*'
+  NewCops: enable
   TargetRubyVersion: 2.6
 
 Layout/DotPosition:
@@ -73,6 +79,12 @@ Naming/FileName:
 
 Naming/RescuedExceptionsVariableName:
   PreferredName: error
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+Rails/ShortI18n:
+  Enabled: false
 
 Style/BlockDelimiters:
   Enabled: false

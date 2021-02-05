@@ -3,11 +3,11 @@
 require "rails_helper"
 
 RSpec.describe RemoveMemberFromGroup do
+  subject { described_class.new(user) }
+
   let(:group) { FactoryBot.create(:group) }
   let(:membership) { FactoryBot.create(:membership) }
   let(:user) { FactoryBot.build(:user) }
-
-  subject { described_class.new(user) }
 
   context "when member is a member of group" do
     before do
@@ -17,17 +17,13 @@ RSpec.describe RemoveMemberFromGroup do
     it "deletes the member" do
       expect {
         subject.process(membership, group)
-      }.to change {
-        Member.count
-      }.by(-1)
+      }.to change(Member, :count).by(-1)
     end
 
     it "deletes the member" do
       expect {
         subject.process(membership, group)
-      }.to change {
-        Membership.count
-      }.by(-1)
+      }.to change(Membership, :count).by(-1)
     end
 
     it "is a success" do

@@ -3,11 +3,11 @@
 require "rails_helper"
 
 RSpec.describe InviteMemberToGroup do
+  subject { described_class.new(user) }
+
   let(:group) { FactoryBot.build(:group) }
 
   let(:user) { FactoryBot.build(:user) }
-
-  subject { described_class.new(user) }
 
   context "when email_address is valid" do
     let(:email_address) { "no@spectre.org" }
@@ -15,9 +15,7 @@ RSpec.describe InviteMemberToGroup do
     it "creates an invitation" do
       expect {
         subject.process(email_address, group)
-      }.to change {
-        Invitation.count
-      }.by(1)
+      }.to change(Invitation, :count).by(1)
     end
 
     it "returns the created invitation in result" do
@@ -55,14 +53,12 @@ RSpec.describe InviteMemberToGroup do
     it "does not create an invitation" do
       expect {
         subject.process(email_address, group)
-      }.to_not change {
-        Invitation.count
-      }
+      }.not_to change(Invitation, :count)
     end
 
     it "is not a success" do
       subject.process(email_address, group)
-      expect(subject).to_not be_success
+      expect(subject).not_to be_success
     end
   end
 end
