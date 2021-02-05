@@ -80,6 +80,9 @@ Naming/RescuedExceptionsVariableName:
 Rails/DynamicFindBy:
   Enabled: false
 
+Rails/ShortI18n:
+  Enabled: false
+
 Style/BlockDelimiters:
   Enabled: false
 
