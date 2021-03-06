@@ -28,7 +28,7 @@ gem "devise"
 gem "simple_form"
 gem "slim-rails"
 gem "turbolinks"
-gem "webpacker"
+gem "webpacker", ">= 6.0.0.pre2"
 
 # Assets management
 gem "uglifier"
