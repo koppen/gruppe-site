@@ -1,0 +1,7 @@
+header.py-10.text-center
+  h1.text-2xl.font-bold.leading-7.text-gray-900.sm:text-3xl.sm:truncate = group
+
+  - if group.description.present?
+    p.text-xl.text-gray-500 = group.description
+
+  = render("groups/navigation", :group => group)

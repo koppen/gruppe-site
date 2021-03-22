@@ -1,0 +1,13 @@
+header.bg-white.shadow-sm.lg:static.lg:overflow-y-visible
+  .max-w-7xl.mx-auto.px-4.sm:px-6.lg:px-8
+    .relative.flex.justify-between.gap-8
+      .flex-none
+        = link_to("gruppe.site", root_path, :class => "block py-4")
+      .flex
+        - if current_user
+          = link_to(translate("layouts.navigation.your_groups"), groups_path, :class => "block py-4")
+      .flex-none
+        - if user_signed_in?
+          = link_to(translate("layouts.navigation.sign_out"), destroy_user_session_path, :class => "block py-4", :method => :delete)
+        - else
+          = link_to(translate("layouts.navigation.sign_in"), new_user_session_path, :class => "block py-4")
