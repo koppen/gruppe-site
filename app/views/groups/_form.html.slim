@@ -1,10 +1,11 @@
-= simple_form_for(group) do |f|
+= simple_form_for(group, :html => {:class => "space-y-4 divide-y divide-gray-200"}) do |f|
   = f.error_notification
   = f.error_notification :message => f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  .form-inputs
-    = f.input :name, :autofocus => true
-    = f.input :description
+  .mt-6.grid.grid-cols-1.gap-y-6.gap-x-4.mt-0.pt-4.sm:grid-cols-6
+    = render(Tailwind::Form::Stacked::InputGroup.new(:attribute => :name, :form => f, :autofocus => true))
+    = render(Tailwind::Form::Stacked::InputGroup::TextArea.new(:attribute => :description, :form => f, :autofocus => true))
 
-  .form-actions
-    = f.button :submit, :class => "btn btn-primary"
+  .flex-shrink-0.border-t.border-gray-200.py-4
+    .space-x-3.flex.justify-end
+      = f.button :submit, :class => "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

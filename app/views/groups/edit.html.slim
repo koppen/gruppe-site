@@ -1,6 +1,13 @@
-header.header
-  h1 Editing group
+- content_for(:page_title) { @group.to_s }
 
-  = link_to "←", @group
+= render("header", :group => @group)
 
-== render "form", :group => @group
+.max-w-7xl.mx-auto.px-4.sm:px-0
+  .max-w-3xl.mx-auto
+    == render "form", :group => @group
+
+.max-w-7xl.mx-auto.px-4.sm:px-0
+  .mb-4.pb-4.border-b.border-gray-200
+    h3.text-lg.leading-6.font-medium.text-gray-900 Close group
+
+  = button_to "Delete #{@group} permanently", @group, :data => {:confirm => "Are you sure?"}, :method => :delete, :class => "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"

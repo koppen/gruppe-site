@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:substancelab/tailwind_components.git
-  revision: 2dfa9d96478da8ae1d145fe64a35be8886300d8e
+  revision: de01b8c59731e01ec8147cc579310693261eb976
   branch: gruppe
   specs:
     tailwind_components (0.1.0)
