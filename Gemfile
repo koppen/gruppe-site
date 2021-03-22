@@ -27,6 +27,10 @@ gem "devise"
 # Frontend
 gem "simple_form"
 gem "slim-rails"
+gem \
+  "tailwind_components",
+  :git => "git@github.com:substancelab/tailwind_components.git",
+  :branch => "gruppe"
 gem "turbolinks"
 gem "webpacker", ">= 6.0.0.pre2"
 

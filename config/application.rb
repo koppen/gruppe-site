@@ -26,3 +26,5 @@ module GruppeSite
     config.add_autoload_paths_to_load_path = false
   end
 end
+
+require "tailwind_components/view_components/engine"
