@@ -174,7 +174,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.0.0)
       ast (~> 2.4.1)
-    pg (0.20.0)
+    pg (1.2.3)
     postgresql (1.0.0)
       pg
     pry (0.13.1)
