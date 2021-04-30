@@ -875,9 +875,9 @@
     rimraf "^3.0.2"
 
 "@rails/webpacker@^6.0.0-beta.5":
-  version "6.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-6.0.0-beta.5.tgz#85576645d016b5c25a481e69a5bb74056f8a297c"
-  integrity sha512-jIrQU1CMCh3tFTzMqIMDCIl9aVk50k8yYac+cOsiGYgdFIkuw6oC6nOJr1JvpBx4gXljWqXbHdLLN91EKHJfFA==
+  version "6.0.0-pre.2"
+  resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-6.0.0-pre.2.tgz#84fa0ac06b5c15b0811830bdd801176bf8ef3330"
+  integrity sha512-VxUaYiNOKAdBZ2TJF5VdQZ/iPZcfR2/Zh9eTg40rLc6XRwAo4P4RyxE59a0TnGxgxYG5Tl3kGahAPCIgikvj0w==
   dependencies:
     "@babel/core" "^7.12.9"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
