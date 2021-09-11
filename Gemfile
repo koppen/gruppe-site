@@ -11,7 +11,7 @@ end
 
 gem "rails"
 
-gem "bootsnap", ">= 1.4.2", :require => false
+gem "bootsnap", ">= 1.4.4", :require => false
 
 # Database
 gem "postgresql"
@@ -64,7 +64,7 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere
   # in the code.
   gem "listen"
-  gem "web-console", "<= 4.0.1"
+  gem "web-console", ">= 4.1.0"
 
   # Run stuff automatically
   gem "guard"
@@ -75,7 +75,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the
   # background. Read more: https://github.com/rails/spring
   gem "spring"
-  gem "spring-watcher-listen"
 end
 
 group :test do
