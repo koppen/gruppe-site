@@ -10,7 +10,7 @@
     "@rails/webpacker": "^6.0.0-beta.5",
     "@tailwindcss/forms": "^0.3.3",
     "autoprefixer": "^10.2.5",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^9.1.2",
     "coffee-script": "^1.12.7",
     "css-loader": "^6.2.0",
     "css-minimizer-webpack-plugin": "^1.2.0",
